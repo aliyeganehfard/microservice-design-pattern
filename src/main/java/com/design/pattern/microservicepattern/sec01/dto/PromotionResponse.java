@@ -1,4 +1,6 @@
 package com.design.pattern.microservicepattern.sec01.dto;
 
-public record PromotionResponse() {
+import java.time.LocalDate;
+
+public record PromotionResponse(Integer id, String type, Double discount, LocalDate endDate) {
 }
