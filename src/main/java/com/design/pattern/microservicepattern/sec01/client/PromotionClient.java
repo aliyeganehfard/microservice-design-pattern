@@ -8,9 +8,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDate;
+
 @Slf4j
 @Service
 public class PromotionClient {
+
+    private final PromotionResponse noPromotion = new PromotionResponse(
+            0, "no promotion", 0d, LocalDate.now()
+    );
 
     private final WebClient webClient;
 
@@ -24,6 +30,9 @@ public class PromotionClient {
         return this.webClient.get()
                 .uri("/{id}", id)
                 .retrieve()
-                .bodyToMono(PromotionResponse.class);
+                .bodyToMono(PromotionResponse.class)
+                .onErrorReturn(noPromotion);
     }
+
+
 }

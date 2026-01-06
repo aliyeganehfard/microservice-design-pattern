@@ -19,10 +19,12 @@ public class ProductClient {
                 .build();
     }
 
-    public Mono<ProductResponse> getProduct(Integer id){
-       return this.webClient.get()
+    public Mono<ProductResponse> getProduct(Integer id) {
+        return this.webClient.get()
                 .uri("/{id}", id)
                 .retrieve()
-                .bodyToMono(ProductResponse.class);
+                .bodyToMono(ProductResponse.class)
+                .onErrorResume(_ -> Mono.empty());
     }
+
 }

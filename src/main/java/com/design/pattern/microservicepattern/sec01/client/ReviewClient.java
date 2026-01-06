@@ -9,6 +9,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -28,6 +29,7 @@ public class ReviewClient {
                 .uri("/{id}", id)
                 .retrieve()
                 .bodyToFlux(Review.class)
-                .collectList();
+                .collectList()
+                .onErrorReturn(Collections.emptyList());
     }
 }
