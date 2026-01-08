@@ -1,7 +1,6 @@
-package com.design.pattern.microservicepattern.sec01.client;
+package com.design.pattern.microservicepattern.sec01.GatewayAggregator.client;
 
-import com.design.pattern.microservicepattern.sec01.dto.ProductResponse;
-import com.design.pattern.microservicepattern.sec01.dto.PromotionResponse;
+import com.design.pattern.microservicepattern.sec01.GatewayAggregator.dto.PromotionResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

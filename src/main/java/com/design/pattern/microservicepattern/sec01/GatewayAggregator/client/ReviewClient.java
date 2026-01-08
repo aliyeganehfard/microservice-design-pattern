@@ -1,12 +1,10 @@
-package com.design.pattern.microservicepattern.sec01.client;
+package com.design.pattern.microservicepattern.sec01.GatewayAggregator.client;
 
-import com.design.pattern.microservicepattern.sec01.dto.ProductResponse;
-import com.design.pattern.microservicepattern.sec01.dto.Review;
+import com.design.pattern.microservicepattern.sec01.GatewayAggregator.dto.Review;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Collections;

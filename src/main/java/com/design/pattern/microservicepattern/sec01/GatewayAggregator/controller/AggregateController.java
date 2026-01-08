@@ -1,7 +1,7 @@
-package com.design.pattern.microservicepattern.sec01.controller;
+package com.design.pattern.microservicepattern.sec01.GatewayAggregator.controller;
 
-import com.design.pattern.microservicepattern.sec01.dto.ProductAggregate;
-import com.design.pattern.microservicepattern.sec01.service.ProductAggregatorService;
+import com.design.pattern.microservicepattern.sec01.GatewayAggregator.dto.ProductAggregate;
+import com.design.pattern.microservicepattern.sec01.GatewayAggregator.service.ProductAggregatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

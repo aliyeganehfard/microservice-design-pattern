@@ -1,9 +1,9 @@
-package com.design.pattern.microservicepattern.sec01.service;
+package com.design.pattern.microservicepattern.sec01.GatewayAggregator.service;
 
-import com.design.pattern.microservicepattern.sec01.client.ProductClient;
-import com.design.pattern.microservicepattern.sec01.client.PromotionClient;
-import com.design.pattern.microservicepattern.sec01.client.ReviewClient;
-import com.design.pattern.microservicepattern.sec01.dto.*;
+import com.design.pattern.microservicepattern.sec01.GatewayAggregator.client.ProductClient;
+import com.design.pattern.microservicepattern.sec01.GatewayAggregator.client.PromotionClient;
+import com.design.pattern.microservicepattern.sec01.GatewayAggregator.client.ReviewClient;
+import com.design.pattern.microservicepattern.sec01.GatewayAggregator.dto.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

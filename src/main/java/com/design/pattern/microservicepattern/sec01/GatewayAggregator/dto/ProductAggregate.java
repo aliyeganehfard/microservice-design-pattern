@@ -1,4 +1,4 @@
-package com.design.pattern.microservicepattern.sec01.dto;
+package com.design.pattern.microservicepattern.sec01.GatewayAggregator.dto;
 
 import lombok.Data;
 import lombok.ToString;

@@ -1,30 +1,30 @@
-package com.design.pattern.microservicepattern.sec01.client;
+package com.design.pattern.microservicepattern.sec02.scatterGather.client;
 
-import com.design.pattern.microservicepattern.sec01.dto.ProductResponse;
+import com.design.pattern.microservicepattern.sec02.scatterGather.dto.FlightResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
 @Service
-public class ProductClient {
+public class DeltaClient {
 
     private final WebClient webClient;
 
-    public ProductClient(@Value("${sec01.product.service}") String baseUrl) {
+    public DeltaClient(@Value("${sec02.delta.service}") String baseUrl) {
         this.webClient = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
     }
 
-    public Mono<ProductResponse> getProduct(Integer id) {
-        return this.webClient.get()
-                .uri("/{id}", id)
+    public Flux<FlightResult> getFlights(String from, String to) {
+        return webClient.get()
+                .uri("{from}/{to}", from, to)
                 .retrieve()
-                .bodyToMono(ProductResponse.class)
+                .bodyToFlux(FlightResult.class)
                 .onErrorResume(_ -> Mono.empty());
     }
-
 }
