@@ -1,0 +1,14 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      review-service:
+       slidingWindowType: count_based
+       slidingWindowSize: 4
+       minimumNumberOfCalls: 2
+       failureRateThreshold: 50
+       waitDurationInOpenState: 10s
+       permittedNumberOfCallsInHalfOpenState: 2
+       recordExceptions:
+         - org.springframework.web.reactive.function.client.WebClientResponseException
+         - java.util.concurrent.TimeoutException
+         - java.lang.InternalError
