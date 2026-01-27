@@ -1,5 +1,7 @@
 package com.design.pattern.microservicepattern.sec09.rateLimiter.controller;
 
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +17,13 @@ public class CalculatorController {
     // CPU intensive
     // 5 requests / 20 seconds
     @GetMapping("calculator/{input}")
+    @RateLimiter(name = "calculator-service", fallbackMethod = "fallback")
     public Mono<ResponseEntity<Integer>> doubleInput(@PathVariable("input") Integer input) {
         return Mono.fromSupplier(() -> input * 2)
                 .map(ResponseEntity::ok);
+    }
+
+    public Mono<ResponseEntity<String>> fallback( Integer input, Throwable ex) {
+        return Mono.just(ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(ex.getMessage()));
     }
 }

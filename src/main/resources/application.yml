@@ -12,3 +12,17 @@ resilience4j:
          - org.springframework.web.reactive.function.client.WebClientResponseException
          - java.util.concurrent.TimeoutException
          - java.lang.InternalError
+  ratelimiter:
+    instances:
+      calculator-service:
+        limit-refresh-period:
+          seconds: 20
+        limit-for-period: 1
+        timeout-duration:
+          seconds: 5
+      review-service:
+        limit-refresh-period:
+          seconds: 20
+        limit-for-period: 3
+        timeout-duration:
+          seconds: 0

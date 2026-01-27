@@ -34,7 +34,7 @@ public class ReviewClient {
                 .bodyToFlux(Review.class)
                 .collectList()
                 .retry(5)
-                .timeout(Duration.ofMillis(300));
+                .timeout(Duration.ofMillis(3000));
     }
 
     public Mono<List<Review>> fallbackReview(Integer id, Throwable ex) {
